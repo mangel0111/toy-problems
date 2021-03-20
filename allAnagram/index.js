@@ -12,27 +12,10 @@
  * console.log(anagrams); // [ 'abc', 'acb', 'bac', 'bca', 'cab', 'cba' ]
  */
 //create a function called all anagrams
-const getAllAnagrams = (word) => {
-  let anagrams = {};
-  const generator = (text, option) => {
-    if (text.length === word.length) {
-      anagrams[text] = true;
-    }
-    for (let index = 0; index < option.length; index++) {
-      generator(
-        text + option[index],
-        option.slice(0, index) + option.slice(index + 1)
-      );
-    }
-  };
-  generator("", word);
-  return Object.keys(anagrams);
-};
-
-const generatorAlt = (word) => {
+const anagramGenerator = (word) => {
   const anagrams = {};
 
-  const anagramGenerator = (currentText, possibleCombinations) => {
+  const anagramGeneratorBuilder = (currentText, possibleCombinations) => {
     if (currentText.length === word.length) {
       anagrams[currentText] = true;
     }
@@ -41,12 +24,15 @@ const generatorAlt = (word) => {
       const allOtherCombinations =
         possibleCombinations.slice(0, index) +
         possibleCombinations.slice(index + 1);
-      anagramGenerator(currentText + currentLetter, allOtherCombinations);
+      anagramGeneratorBuilder(
+        currentText + currentLetter,
+        allOtherCombinations
+      );
     }
   };
-  anagramGenerator("", word);
+  anagramGeneratorBuilder("", word);
 
   return Object.keys(anagrams);
 };
 
-console.log("abc", generatorAlt("abc"));
+console.log("abc", anagramGenerator("abc"));
