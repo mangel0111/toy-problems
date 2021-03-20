@@ -29,6 +29,30 @@ const bubbleSort = (numbers) => {
   let temporary;
   for (let loop = 0; loop < length; loop++) {
     console.log("loop", loop);
+    for (var position = 0; position < length; position++) {
+      console.log("inner loop", position);
+
+      const currentValue = numbers[position];
+      e;
+      const previous = numbers[position + 1];
+
+      console.log("Current", currentValue);
+      console.log("PreviousNumber", previous);
+      if (currentValue > previous) {
+        temporary = numbers[position];
+        numbers[position] = numbers[position + 1];
+        numbers[position + 1] = temporary;
+      }
+    }
+  }
+  return numbers;
+};
+
+const bubbleSortImproved = (numbers) => {
+  const length = numbers.length;
+  let temporary;
+  for (let loop = 0; loop < length; loop++) {
+    console.log("loop", loop);
     for (var innerLoop = loop; innerLoop > 0; innerLoop--) {
       console.log("inner loop", innerLoop);
 
@@ -47,4 +71,4 @@ const bubbleSort = (numbers) => {
   return numbers;
 };
 
-console.log([5, 6, 7, 3, 2, 1], bubbleSort([5, 6, 7, 3, 2, 1])); // returns [1, 2, 3,]
+console.log([5, 7, 6, 3, 2, 1], bubbleSortImproved([5, 6, 7, 3, 2, 1])); // returns [1, 2, 3,]
