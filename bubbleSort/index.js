@@ -15,13 +15,36 @@
  *
  */
 
+function comparator(a, b) {
+  return a - b;
+}
+
 /*
  * Example:
  * bubbleSort([2, 1, 3]); // returns [1, 2, 3]
  *
  */
-const bubbleSort = (list) => {
-  return list;
+const bubbleSort = (numbers) => {
+  const length = numbers.length;
+  let temporary;
+  for (let loop = 0; loop < length; loop++) {
+    console.log("loop", loop);
+    for (var innerLoop = loop; innerLoop > 0; innerLoop--) {
+      console.log("inner loop", innerLoop);
+
+      const currentValue = numbers[innerLoop];
+      const previous = numbers[innerLoop - 1];
+
+      console.log("Current", currentValue);
+      console.log("PreviousNumber", previous);
+      if (comparator(currentValue, previous) < 0) {
+        temporary = numbers[innerLoop];
+        numbers[innerLoop] = numbers[innerLoop - 1];
+        numbers[innerLoop - 1] = temporary;
+      }
+    }
+  }
+  return numbers;
 };
 
-console.log(bubbleSort([5, 6, 7, 3, 2, 1]), [1, 2, 3, 4, 5, 6]); // returns [1, 2, 3,]
+console.log([5, 6, 7, 3, 2, 1], bubbleSort([5, 6, 7, 3, 2, 1])); // returns [1, 2, 3,]
