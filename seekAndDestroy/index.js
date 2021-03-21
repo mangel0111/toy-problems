@@ -9,3 +9,16 @@ destroyer([1, 2, 3, 1, 2, 3], 2, 3) should return [1, 1].
 destroyer([1, 2, 3, 5, 1, 2, 3], 2, 3) should return [1, 5, 1].
 destroyer([3, 5, 1, 2, 2], 2, 3, 5) should return [1].
 */
+const destroyer = (objectives, ...targets) => {
+  const response = objectives.filter(
+    (objective) => !targets.includes(objective)
+  );
+  return response;
+};
+
+console.log("[1, 2, 3, 1, 2, 3], 2, 3", destroyer([1, 2, 3, 1, 2, 3], 2, 3));
+console.log(
+  "[1, 2, 3, 5, 1, 2, 3], 2, 3",
+  destroyer([1, 2, 3, 5, 1, 2, 3], 2, 3)
+);
+console.log("[3, 5, 1, 2, 2], 2, 3, 5", destroyer([3, 5, 1, 2, 2], 2, 3, 5));
