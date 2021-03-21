@@ -23,7 +23,9 @@ const evenOccurrence = (list) => {
       frequency[currentNumber] = 1;
     }
   }
+  console.log(frequency);
   const frequencyKeys = Object.keys(frequency);
+
   for (let index = 0; index < frequencyKeys.length; index++) {
     const frequencyKey = frequencyKeys[index];
     if (frequency[frequencyKey] % 2 === 0) {
@@ -35,5 +37,5 @@ const evenOccurrence = (list) => {
 
 console.log(
   [1, 7, 2, 4, 5, 6, 8, 9, 6, 4],
-  evenOccurrence([1, 7, 2, 4, 5, 6, 8, 9, 6, 4])
+  evenOccurrence([1, 7, 7, 2, 4, 5, 6, 8, 9, 6, 4])
 );
