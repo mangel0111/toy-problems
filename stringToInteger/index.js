@@ -82,20 +82,6 @@
 const minLimit = Math.pow(-2, 31);
 const maxLimit = Math.pow(2, 31);
 const specialCharacters = ["+", "-"];
-const validCharacters = [
-  "1",
-  "2",
-  "3",
-  "4",
-  "5",
-  "6",
-  "7",
-  "8",
-  "9",
-  "0",
-  " ",
-  ...specialCharacters,
-];
 
 /**
  * @param {string} s
@@ -103,23 +89,43 @@ const validCharacters = [
  */
 var myAtoi = function (s) {
   let number = "";
+  let validCharacters = [
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
+    "7",
+    "8",
+    "9",
+    "0",
+    " ",
+    ...specialCharacters,
+  ];
 
   if (!validCharacters.includes(s[0])) {
     return 0;
   }
   let shouldIgnoreNextInvalidCharacter = false;
   for (let index = 0; index < s.length; index++) {
+    const currentValue = s[index];
     if (
       shouldIgnoreNextInvalidCharacter &&
-      !validCharacters.includes(s[index])
+      !validCharacters.includes(currentValue)
     ) {
       break;
     }
-    if (validCharacters.includes(s[index])) {
-      if (s[index] !== " ") {
-        number += s[index];
+
+    if (validCharacters.includes(currentValue)) {
+      if (currentValue !== " ") {
+        number += currentValue;
+        validCharacters = validCharacters.filter(
+          (char) => ![" ", ...specialCharacters].includes(char)
+        );
       }
     }
+
     shouldIgnoreNextInvalidCharacter = true;
   }
   const atoiNumber = parseInt(number);
@@ -147,5 +153,7 @@ console.log("20000000000000000000", myAtoi("20000000000000000000"));
 console.log("21474836460", myAtoi("21474836460"));
 console.log("-5-", myAtoi("-5-"));
 console.log(" b11228552307", myAtoi(" b11228552307"));
-console.log("   -42", myAtoi("   -42"));
 console.log(".1", myAtoi(".1"));
+console.log("   +0 123", myAtoi("   +0 123"));
+console.log("   -42", myAtoi("   -42"));
+console.log("0  123", myAtoi("0  123"));
