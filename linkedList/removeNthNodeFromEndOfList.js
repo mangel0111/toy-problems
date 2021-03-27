@@ -52,4 +52,8 @@ var removeNthFromEnd = function (head, n) {
   return currentListNode.next;
 };
 
-console.log(removeNthFromEnd(new ListNode(1), 1));
+// console.log(removeNthFromEnd(new ListNode(1), 1));
+
+const firstNode = new ListNode(2);
+const twoNodesList = new ListNode(1, firstNode);
+console.log(removeNthFromEnd(twoNodesList, 1));
