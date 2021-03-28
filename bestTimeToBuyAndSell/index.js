@@ -37,3 +37,4 @@ var maxProfit = function (prices) {
 console.log([7, 1, 5, 3, 6, 4], maxProfit([7, 1, 5, 3, 6, 4]));
 console.log([1, 2, 3, 4, 5], maxProfit([1, 2, 3, 4, 5]));
 console.log([7, 6, 4, 3, 1], maxProfit([7, 6, 4, 3, 1]));
+console.log([7, 1, 5, 3, 6, 4], maxProfit([7, 1, 5, 3, 6, 4]));
