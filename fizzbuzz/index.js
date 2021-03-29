@@ -19,22 +19,26 @@ const printNumbers = (index) => {
   const isMultipleOfThree = index % 3 === 0;
   if (isMultipleOfFive && isMultipleOfThree) {
     console.log("fizzBuzz");
-    return;
+    return "fizzBuzz";
   }
   if (isMultipleOfThree) {
     console.log("fizz");
-    return;
+    return "Fizz";
   }
   if (isMultipleOfFive) {
-    console.log("fizz");
-    return;
+    console.log("Buzz");
+    return "Buzz";
   }
   console.log(index);
+  return `${index}`;
 };
 const fizzBuzz = (number) => {
-  for (let index = 1; index < number; index++) {
-    printNumbers(index);
+  const response = [];
+  for (let index = 1; index <= number; index++) {
+    response.push(printNumbers(index));
   }
+  return response;
 };
 
 console.log("5", fizzBuzz(5));
+console.log("1", fizzBuzz(1));
