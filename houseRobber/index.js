@@ -35,4 +35,24 @@ var rob = function (nums) {
   return Math.max(pairMaxProfit, noneMaxProfit);
 };
 
+var robDp = (nums) => {
+  let sizeOfStreet = nums.length;
+  if (sizeOfStreet === 0) {
+    return 0;
+  }
+
+  let maxRobbedAmount = [];
+
+  maxRobbedAmount[sizeOfStreet] = 0;
+  maxRobbedAmount[sizeOfStreet - 1] = nums[sizeOfStreet - 1];
+
+  for (let index = sizeOfStreet - 2; index >= 0; index--) {
+    maxRobbedAmount[index] = Math.max(
+      maxRobbedAmount[index + 1],
+      maxRobbedAmount[index + 2] + nums[index]
+    );
+  }
+  return maxRobbedAmount[0];
+};
+
 console.log("[1,2,3,1]", rob([1, 2, 3, 1]));
