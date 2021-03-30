@@ -19,7 +19,7 @@ const printNumbers = (index) => {
   const isMultipleOfThree = index % 3 === 0;
   if (isMultipleOfFive && isMultipleOfThree) {
     console.log("fizzBuzz");
-    return "fizzBuzz";
+    return "FizzBuzz";
   }
   if (isMultipleOfThree) {
     console.log("fizz");
