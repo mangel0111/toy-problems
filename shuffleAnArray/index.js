@@ -70,3 +70,4 @@ const shuffler = new Solution([1, 2, 3]);
 console.log(shuffler.shuffle());
 console.log(shuffler.reset());
 console.log(shuffler.shuffle());
+console.log(shuffler.shuffle());
