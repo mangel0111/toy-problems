@@ -30,3 +30,4 @@ console.log(
   hammingWeight(00000000000000000000000000001011)
 );
 console.log("111001011", hammingWeight(111001011));
+console.log("1111", hammingWeight(1111));
