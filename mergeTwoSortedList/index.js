@@ -51,6 +51,13 @@ class LinkedList {
     }
 }
 
+
+const assignRemainingLinkedList = (linkedList, head) => {
+    linkedList.addToTheLast(new Node(head.val));
+    linkedList.addToTheLast(head.next);
+    return linkedList;
+}
+
 /**
  * @param {ListNode} l1
  * @param {ListNode} l2
@@ -61,18 +68,18 @@ var mergeTwoLists = function (l1, l2) {
     let currentFirstHead = l1.head;
     let currentSecondHead = l2.head;
     while (1) {
-        if (currentFirstHead && currentFirstHead.val < currentSecondHead.val) {
+        if (!currentFirstHead || !currentSecondHead) {
+            mergedLinkedList = assignRemainingLinkedList(mergedLinkedList, currentSecondHead || currentFirstHead);
+            break;
+        }
+
+        if (currentFirstHead.val < currentSecondHead.val) {
             mergedLinkedList.addToTheLast(new Node(currentFirstHead.val));
             currentFirstHead = currentFirstHead.next;
-        } else if (currentSecondHead) {
+        } else {
             mergedLinkedList.addToTheLast(new Node(currentSecondHead.val));
             currentSecondHead = currentSecondHead.next;
         }
-
-        if (!currentFirstHead && !currentSecondHead) {
-            break;
-        }
-        console.log(mergedLinkedList.printList())
     }
     return mergedLinkedList;
 };
@@ -89,5 +96,8 @@ llist1.addToTheLast(new Node(15));
 llist2.addToTheLast(new Node(2));
 llist2.addToTheLast(new Node(3));
 llist2.addToTheLast(new Node(20));
+llist2.addToTheLast(new Node(25));
+llist2.addToTheLast(new Node(27));
+llist2.addToTheLast(new Node(28));
 
 console.log(mergeTwoLists(llist1, llist2).printList())
