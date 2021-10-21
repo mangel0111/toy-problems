@@ -35,6 +35,28 @@ var twoSum = function (nums, target) {
     }
   }
 };
+/**
+ * @param {number[]} nums
+ * @param {number} target
+ * @return {number[]}
+ */
+var twoSumImproved = function (nums, target) {
+  let numbersFounds = {};
+  for (let index = 0; index < nums.length; index++) {
+    let currentNumber = nums[index];
+    let difference = target - currentNumber;
+    let numberFounded = numbersFounds[difference];
+
+    if (numberFounded !== undefined) {
+      return [numberFounded, index];
+    }
+    numbersFounds[currentNumber] = index;
+  }
+  return [];
+};
 
 console.log("nums = [2,7,11,15], target = 9", twoSum([2, 7, 11, 15], 9));
 console.log("nums = [3,2,4], target = 6", twoSum([3, 2, 4], 6));
+
+console.log("nums = [2,7,11,15], target = 9", twoSumImproved([2, 7, 11, 15], 9));
+console.log("nums = [3,2,4], target = 6", twoSumImproved([3, 2, 4], 6));
