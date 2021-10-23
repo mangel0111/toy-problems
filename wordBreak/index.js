@@ -38,6 +38,20 @@ var wordBreak = function (s, wordDict) {
     return dp[dp.length - 1]
 };
 
+function sockMerchant(n, ar) {
+    let pairs = {};
+    let numberOfPairs = 0;
+    for (let index = 0; index < ar.length; index++) {
+        const currentSock = ar[n];
+        if (pairs[currentSock]) {
+            numberOfPairs++;
+            delete pairs[currentSock];
+        }
+        pairs[currentSock] = true;
+    }
+    return numberOfPairs;
+}
+
 console.log(wordBreak("leetcode", ["leet", "code"]));
 //console.log(wordBreak("applepenapple", ["apple", "pen"]));
 //console.log(wordBreak("catsandog", ["cats", "dog", "sand", "and", "cat"]));
