@@ -21,18 +21,19 @@ const minimunCost = (list) => {
   return minSum;
 };
 
-const optimizedMinimumCost = (list) => {
+const optimizedMinimumCost = (listToModify) => {
+  const list = [...listToModify];
   const remainingList = list.slice(1, list.length - 1);
   const firstMinValue = Math.min(...remainingList);
   const indexOfMinValue = remainingList.indexOf(firstMinValue);
 
   const listToTheRigth = remainingList.slice(
-    indexOfMinValue + 1,
+    indexOfMinValue + 2,
     remainingList.length
   );
   const lastMinValueToTheRight = Math.min(...listToTheRigth);
 
-  const listToTheLeft = remainingList.slice(0, indexOfMinValue);
+  const listToTheLeft = remainingList.slice(0, indexOfMinValue - 1);
   const lastMinValueToTheLeft = Math.min(...listToTheLeft);
 
   const lastMinValue =
@@ -46,8 +47,8 @@ const optimizedMinimumCost = (list) => {
 console.log(minimunCost([5, 3, 2, 4, 6, 1, 8, 3]), 3);
 console.log(optimizedMinimumCost([5, 3, 2, 4, 6, 1, 8, 3]), 3);
 
-// console.log(minimunCost([5, 2, 2, 1, 1, 2, 4, 5, 6, 2, 1, 9]), 3);
-// console.log(optimizedMinimumCost([5, 2, 2, 1, 1, 2, 4, 5, 6, 2, 1, 9]), 3);
+console.log(minimunCost([5, 2, 2, 1, 1, 2, 4, 5, 6, 2, 1, 9]), 2);
+console.log(optimizedMinimumCost([5, 2, 2, 1, 1, 2, 4, 5, 6, 2, 1, 9]), 2);
 
-// console.log(minimunCost([5, 2, 1, 4, 3, 6]), 4);
-// console.log(optimizedMinimumCost([5, 2, 1, 4, 3, 6]), 4);
+console.log(minimunCost([5, 2, 1, 4, 3, 6]), 4);
+console.log(optimizedMinimumCost([5, 2, 1, 4, 3, 6]), 4);
