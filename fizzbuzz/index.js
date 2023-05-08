@@ -18,27 +18,31 @@ const printNumbers = (index) => {
   const isMultipleOfFive = index % 5 === 0;
   const isMultipleOfThree = index % 3 === 0;
   if (isMultipleOfFive && isMultipleOfThree) {
-    console.log("fizzBuzz");
+    // console.log("fizzBuzz");
     return "FizzBuzz";
   }
   if (isMultipleOfThree) {
-    console.log("fizz");
+    // console.log("fizz");
     return "Fizz";
   }
   if (isMultipleOfFive) {
-    console.log("Buzz");
+    // console.log("Buzz");
     return "Buzz";
   }
-  console.log(index);
-  return `${index}`;
+  // console.log(index);
+  return index;
 };
 const fizzBuzz = (number) => {
   const response = [];
-  for (let index = 1; index <= number; index++) {
-    response.push(printNumbers(index));
+  for (let index = 1; index <= Math.abs(number); index++) {
+    const number = printNumbers(Math.abs(index));
+    if (typeof number === "number") {
+      response.push(number);
+    }
   }
   return response;
 };
 
-console.log("5", fizzBuzz(5));
-console.log("1", fizzBuzz(1));
+[1, 5, 10, 20, 45, 100, 250, 500, -1, -20].forEach((num) => {
+  console.log(num, fizzBuzz(num).length);
+});

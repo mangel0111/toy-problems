@@ -19,7 +19,9 @@ const flatterArray = (list) => {
 const getUniqueFromTwoArrays = (firstList, secondList) => {
   return Array.from(
     new Set([...flatterArray(firstList), ...flatterArray(secondList)])
-  );
+  ).sort(function (a, b) {
+    return a - b;
+  });
 };
 
 console.log(
