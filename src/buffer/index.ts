@@ -11,6 +11,9 @@
  * - Auto Flush: When the buffer reaches its maximum size, write it to disk.
  * - Manual Flush: The flush() method writes any remaining data to disk.
  * - File Output Interface: The FileOut interface simulates file operations.
+ * 
+ * Second part:
+ * - Extend the BufferedFileWriter class to accept a 'numBytes' argument in the write method.
  */
 interface FileOut {
   write(buf: string[]): number; // Writes buffer to file and returns bytes written
