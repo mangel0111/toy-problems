@@ -16,7 +16,7 @@ const createKeyMap = (word) => {
   return keys;
 };
 
-const isAnagram = (firstWord, secondWord) => {
+export const isAnagram = (firstWord, secondWord) => {
   const firstWordParsed = firstWord.toLowerCase();
   const secondWordParsed = secondWord.toLowerCase();
   if (firstWord.length !== secondWord.length) {
@@ -41,8 +41,3 @@ const isAnagram = (firstWord, secondWord) => {
   }
   return true;
 };
-
-console.log("'finder', 'Friend'", isAnagram("finder", "Friend"));
-console.log("'finder', 'Frient'", isAnagram("finder", "Frient"));
-console.log("'adios', 'aloha'", isAnagram("adios", "aloha"));
-console.log("'hello', 'bye'", isAnagram("hello", "bye"));
