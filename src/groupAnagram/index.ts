@@ -33,24 +33,16 @@ Constraints:
 strs[i] consists of lowercase English letters.
  */
 
-const checkAnagram = (wordA: string, wordB: string): boolean => {
-  return wordA.split('').reverse().join('') === wordB;
-};
-
 export function groupAnagrams(words: string[]): string[][] {
-  const anagramGroups: string[][] = [];
+  const map = new Map<string, string[]>();
 
-  for (let index = 0; index < words.length; index++) {
-    for (let index2 = 0; index2 < words.length; index2++) {
-      if (index === index2) {
-        continue;
-      }
-      if (checkAnagram(words[index], words[index2])) {
-      } else {
-        anagramGroups.push([words[index]]);
-      }
+  for (const str of words) {
+    const sorted = str.split("").sort().join(""); // Sort characters to get the key
+    if (!map.has(sorted)) {
+      map.set(sorted, []);
     }
+    map.get(sorted)!.push(str);
   }
 
-  return anagramGroups;
+  return Array.from(map.values());
 }

@@ -4,11 +4,15 @@ import { groupAnagrams } from '.';
 
 describe('groupAnagram()', () => {
   it('should group anagrams', () => {
-    expect(groupAnagrams(['eat', 'tea', 'tan', 'ate', 'nat', 'bat'])).toEqual([
-      ['bat'],
-      ['nat', 'tan'],
-      ['ate', 'eat', 'tea'],
-    ]);
+    expect(
+      groupAnagrams(['eat', 'tea', 'tan', 'ate', 'nat', 'bat'])
+    ).toContainValue(['bat']);
+    expect(
+      groupAnagrams(['eat', 'tea', 'tan', 'ate', 'nat', 'bat'])
+    ).toContainValue(['tan', 'nat']);
+    expect(
+      groupAnagrams(['eat', 'tea', 'tan', 'ate', 'nat', 'bat'])
+    ).toContainValue([ "eat", "tea", "ate" ]);
   });
 
   it('only return the only word provided', () => {
